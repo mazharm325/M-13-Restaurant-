@@ -3,15 +3,15 @@
 //https://crudcrud.com/api/ba496dad422c414092625b6456dd7929/bookedorder
 //https://crudcrud.com/api/ba496dad422c414092625b6456dd7929/makeorder
 //Assigning elements to variables
-const form = document.querySelector(`#my-form`);
+const form = document.querySelector('#my-form');
 const price = document.getElementById("price");
 const dish = document.getElementById("pname");
 const table = document.getElementById("ptable");
-const submitButton = document.getElementById(`submitbtn`)
-const table1 = document.getElementById(`tablebody1`);
-const table2 = document.getElementById(`tablebody2`);
-const table3 = document.getElementById(`tablebody3`);
-// const tablefootData = document.getElementById(`tablefootdata`);
+const submitButton = document.getElementById('submitbtn')
+const table1 = document.getElementById("tablebody1");
+const table2 = document.getElementById('tablebody2');
+const table3 = document.getElementById('tablebody3');
+// const tablefootData = document.getElementById('tablefootdata ');
 
 
 // ON SUBMIT FUNCTION 
@@ -29,7 +29,7 @@ async function onSubmit(e) {
 
     await axios.post('https://crudcrud.com/api/ba496dad422c414092625b6456dd7929/makeorder', { dishdata })
         .then((res) => {
-            console.log(`${res.data.dishdata.dishName} added`);
+            console.log(`${res.data.dishdata.dishName}added`);
             console.log(res);
         })
         .catch((err) => {
@@ -38,9 +38,7 @@ async function onSubmit(e) {
     //print on browser by get 
     axios.get('https://crudcrud.com/api/ba496dad422c414092625b6456dd7929/bookedorder')
         .then((res) => {
-            console.log(`
-        data feched
-        for printing `);
+            console.log('data feched for printing');
             showOutput(res);
             console.log(res);
         })
@@ -59,10 +57,8 @@ function onEditorDelete(e) {
     if (e.target && e.target.classList.contains("delbtn")) {
         //remove from server 
         axios
-            .delete('https://crudcrud.com/api/ba496dad422c414092625b6456dd7929/bookedorder/${btnId}')
-            .then(res => console.log(`
-                This id: $ { btnId }
-                data deleted `))
+            .delete(`https://crudcrud.com/api/ba496dad422c414092625b6456dd7929/bookedorder/'${btnId}`)
+            .then(res => console.log(`This id: ${btnId} data deleted`))
             .catch(err => console.error(err));
         //remove from browser
         e.target.parentElement.parentElement.remove();
@@ -78,22 +74,16 @@ function showOutput(res) {
     table3.innerHTML = table3.children[0].outerHTML;
     res.data.forEach((ele, index) => {
         const tr = document.createElement(`
-                tr `);
+                    tr `);
         const val = ele.dishdata;
         const userId = ele._id;
         const tableId = ele.dishdata.tableNo;
-        const txt = ` <
-                td > $ { index + 1 } < /td> <
-                td > $ { val.dishName } < /td> <
-                td > $ { val.dishPrice } < /td> <
-                td >
-                <
-                button class = "btn btn-danger delbtn"
-                id = $ { userId } >
-                delete <
-                /button> < /
-                td >
-                `;
+        const txt = `<td> ${index + 1} </td>
+                    <td> ${val.dishName} </td>
+                    <td> ${val.dishPrice} </td> 
+                    <td>
+                    <button class = "btn btn-danger delbtn" id = ${userId}> delete </button> 
+                    </td>`;
         //appending details to table
         tr.innerHTML += txt;
         //Choosing correct table
@@ -108,13 +98,9 @@ function showOutput(res) {
         }
 
         //back to empty 
-        price.value = `
-                `;
-        dish.value = `
-                `;
-        table.value = `
-                Choose...
-                `;
+        price.value = ``;
+        dish.value = ``;
+        table.value = `Choose...`;
 
     });
 
@@ -125,7 +111,7 @@ axios
 
     .get('https://crudcrud.com/api/ba496dad422c414092625b6456dd7929/bookedorder')
     .then((res) => {
-        console.log(`!1 st time printing`);
+        console.log('!1 st time printing');
         showOutput(res);
         console.log(res);
     })
