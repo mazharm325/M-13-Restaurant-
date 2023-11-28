@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Restaurant Order Making</title>
-    <link rel="stylesheet" href="restaurant_index_css.css">
+    <title>Fine Dine Restaurant Order Making</title>
+    <link rel="stylesheet" href="restaurant_style_css.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel=" stylesheet " integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9 " crossorigin="anonymous ">
 </head>
 
@@ -17,18 +17,29 @@
         <form class="my-form my-form-style" onsubmit="saveData(event)">
             <div class="form-control">
                 <input type="text" name="dishes" id="dishes" placeholder="dish_name" class="form-inputs">
-                <input type="text" name="quantity" id="quantity" placeholder="quantity" class="form-inputs">
+                <!-- <input type="text" name="quantity" id="quantity" placeholder="quantity" class="form-inputs"> -->
                 <input type="number" name="price" id="price" placeholder="form-inputs">
-                <input type="number" name="table" id="table" placeholder="Select Table number" class="form-inputs">
+                <!-- <input type="number" name="table" id="table" placeholder="Select Table number" class="form-inputs"> -->
+                <select name="table" id="tableno">
+
+                    <option value="table1">Table1</option>
+                    <option value="table2">Table2</option>
+                    <option value="table3">Table3</option>
+                </select>
                 <button type="submit" class="btn btn-info form-inputs">Add Bill</button>
             </div>
         </form>
         <hr>
-        <div id="parent" class="BillList"></div>
+        <ul id="parent1" class="BillList">Table 1
+        </ul>
+        <ul id="parent2" class="BillList">Table 2
+        </ul>
+        <ul id="parent3" class="BillList">Table 3
+        </ul>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-    <script src="restaurant_index_js.js"></script>
+    <script src="restaurant_main_js.js"></script>
 
 </body>
 
